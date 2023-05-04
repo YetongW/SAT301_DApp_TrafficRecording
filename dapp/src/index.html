@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+/* Body Styles */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5;
+}
+
+/* Main Container */
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Header Styles */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* Address Styles */
+.address {
+  margin-left: 100px;
+  justify-content: center;
+  align-items: center;
+  color: #880e4f;
+  font-style: oblique;
+  border: solid black 1px;
+  border-radius: 10px;
+  padding: 8px;
+}
+
+.address-text {
+  margin: 0;
+  padding: 0;
+}
+
+/* Welcome Text Styles */
+.inline1 {
+  display: inline-block;
+}
+
+.welcome-text {
+  font-size: 28px;
+  margin: 0;
+  padding: 0;
+}
+
+/* Heading Text Styles */
+.inline2 {
+  display: inline-block;
+}
+
+.heading-text {
+  color: darkblue;
+  font-family:Georgia, 'Times New Roman', Times, serif;font-size:50px;
+  font-size: 36px;
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+}
+
+/* Message Styles */
+.msg {
+  margin-bottom: 30px;
+}
+
+.msg-text {
+  font-size: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+/* Form Styles */
+.form {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  margin-bottom: 30px;
+}
+
+/* Form Heading Styles */
+.form-heading {
+  color: #0a4ac2;
+  font-size: 24px;
+  margin: 0 0 20px;
+  padding: 0;
+  font-weight: bold;
+    border-radius: 20px;    
+    background: #ebecf0;
+    width: 600px;
+    height: 50px;   
+    align-items: center;
+    display: flex;
+    border-color: aqua;
+    justify-content: center;
+    box-shadow: inset 9px 9px 18px #cfd0d3, 
+                inset -9px -9px 18px #ffffff;
+}
+
+/* Input Field Styles */
+.input-field {
+  padding: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+/* Submit Button Styles */
+.form-submit-button {
+  color: #880e4f;
+    border-radius: 10px;
+background: linear-gradient(145deg, #d4d4d8, #fbfdff);
+box-shadow:  5px 15px 20px #c8c9cc, 
+             -15px -15px 20px #ffffff;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    width: 100px;
+}
+
+.form-submit-button:hover {
+  background-color: #0080ff;
+}
+
+/* Result Text Styles */
+.result-text {
+  color: #007c91;
+   border-radius: 8px;
+    width: 300px;
+    margin-left: 250px;
+    height: 60px;
+    display: flex;
+    margin-right: 250px;
+    justify-content: center;
+    align-items: center;
+background: #ebecf0;
+box-shadow:  15px 15px 30px #cfd0d3, 
+             -15px -15px 30px #ffffff;
+}
+.display-results{
+       float: left;
+    padding-top: 50px;
+    padding-bottom:50px;
+    margin-top: 40px;
+    border-radius: 36px;    
+    background: #ebecf0; 
+    margin-bottom: 100px; 
+    box-shadow:  20px 20px 60px #cccdd1, 
+                 -20px -20px 60px #ffffff;
+}
+    </style>
+    <title>Traffic-Record</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="css/style.css"/>
+     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/web3.min.js"></script>
+    <script src="js/truffle-contract.js"></script>
+    <script src="js/app.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="address"id="address">
+      <p class="address-text">Your current address will be displayed here</p>
+    </div>
+    <div class="heading">
+      <p class="welcome-text">Welcome to</p>
+      <h1 class="heading-text">Traffic Collision Event Record Management</h1>
+    </div>
+    <div class="msg">
+      <p class="msg-text">Want to check Traffic Collision Event Record?</p>
+      <p class="msg-text">Just register your information and you're good to go!</p>
+    </div>
+
+    <div class="register-form">
+      <h2 class="form-heading">For vehicle registration:</h2>
+      
+        <div class="form-group">
+          <label for="Identification" class="form-label">Vehicle Identification:</label>
+          <input id="Identification" type="text" class="form-input" placeholder="Enter vehicle identification" >
+        </div>
+        <div class="form-group">
+          <label for="count" class="form-label">Number of Collision Events:</label>
+          <input id="CollisionCount" type="number" class="form-input" placeholder="Enter number of collision events" >
+        </div>
+        <button type="button" onclick="App.recordV();" id="v_done" class="form-submit-button">Register</button>
+      
+    </div>
+
+    <div class="update-form">
+      <h2 class="form-heading">For updating vehicle EDR info:</h2>
+      <div class="form-group">
+        <label for="EDRInfo" class="form-label">EDR Information:</label>
+        <input id="EDRInfo" type="text" class="form-input" placeholder="Enter EDR information" >
+      </div>
+        <div class="form-group">
+          <label for="update_count" class="form-label">Number of Collision Events:</label>
+          <input id="update_count" type="number" class="form-input" placeholder="Enter number of collision events" >
+        </div>
+        <button type="button" onclick="App.recordEDRinfo();" id="EDRInfo_reg" class="form-submit-button">Record</button>
+      
+    </div>
+
+    <div class="search-form">
+      <h2 class="form-heading">For searching vehicle record:</h2>
+      
+        <div class="form-group">
+          <button type="button" onclick="App.showVehiclebyOwn();" class="form-submit-button">Search</button>
+        </div>
+      
+      <div class="display-results">
+        <p id="id_display" class="result-text">Display id</p>
+        <p id="CollisionCount_display" class="result-text">Display CollisionCount</p>
+        <p id="Identification_display" class="result-text">Display identification</p>
+        <p id="EDRInfo_display" class="result-text">Display EDR info</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
