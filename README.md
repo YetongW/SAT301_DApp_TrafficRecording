@@ -26,7 +26,8 @@ npm install web3
 The above to help you realize realted settinngs on the computer
 
 To run this project, you should use following instructions to sart local server
-
+tips: ensure the version of node js
+if fail use npm install all, after clone this project
 ###################################################################################################
 
 ls
